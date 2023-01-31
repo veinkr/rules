@@ -1,0 +1,6 @@
+mixed-port: 17890
+allow-lan: true
+mode: Rule
+log-level: info
+ipv6: true
+external-controller: :19090

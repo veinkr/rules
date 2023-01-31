@@ -1,0 +1,41 @@
+version = 1
+[custom]
+enable_rule_generator = true
+overwrite_original_rules = false
+clash_rule_base = "https://cdn.jsdelivr.net/gh/veinkr/rules@main/base_scrap_config.yml"
+
+[[custom_groups]]
+name = "AUTO"
+type = "url-test"
+rule = [".*"]
+url = "http://www.gstatic.com/generate_204"
+interval = 300
+
+[[custom_groups]]
+name = "DIRECTS"
+type = "select"
+rule = ["[]DIRECT"]
+
+[[custom_groups]]
+name = "Telegram"
+type = "load-balance"
+rule = [
+    "香港|新加坡|台湾|日本"
+]
+strategy = "round-robin"
+url = "http://cp.cloudflare.com/generate_204"
+interval = 300
+lazy = false
+
+[[rulesets]]
+group = "Telegram"
+ruleset = "https://cdn.jsdelivr.net/gh/veinkr/rules@main/t.list"
+type = "surge-ruleset"
+
+[[rulesets]]
+group = "DIRECTS"
+ruleset = "[]GEOIP,CN"
+
+[[rulesets]]
+group = "AUTO"
+ruleset = "[]FINAL"
