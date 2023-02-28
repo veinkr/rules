@@ -6,7 +6,7 @@ clash_rule_base = "https://cdn.jsdelivr.net/gh/veinkr/rules@main/base_scrap_conf
 
 [[custom_groups]]
 name = "AUTO"
-type = "url-test"
+type = "select"
 rule = ["[]LoadBalance", ".*"]
 url = "http://www.gstatic.com/generate_204"
 interval = 300
